@@ -1,0 +1,19 @@
+﻿.navbar {
+    background-color: #e3f2fd;
+}
+
+.footerlinks {
+    color: #ffffff;
+    text-decoration: none !important;
+}
+
+    .footerlinks:hover {
+        color: #ffd800;
+    }
+
+#footer1 {
+    background-color: #010ea2;
+}
+#footer2 {
+    background-color: #010ea2;
+}
