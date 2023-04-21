@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="paymentform.aspx.cs" Inherits="StudentManagement.paymentform" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="paymentform.aspx.cs" Inherits="StudentManagement.paymentform" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -31,96 +32,52 @@
                             <div class="col-md-5">
                                 <label>Student ID</label>
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"
-                                        placeholder="Student ID" ReadOnly="True" TextMode="Number">
+                                    <div class="input-group">
+                                        <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"
+                                            placeholder="Student ID" ReadOnly="false">
 
                                     </asp:TextBox>
+                                      
+                                        </div>
                             </div>
                                 </div>
 
 
-                            <div class="col-md-7">
-                                <label>Student name</label>
-                                <div class="form-group">
-                                    <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control"
-                                        placeholder="Student name" ReadOnly="True">
-
-                                    </asp:TextBox>
-                            </div>
-
-                        </div>
+                           
 
                             </div>
                            
 
-                        <div class="row my-2">
-                            <div class="col-md-5">
-                                <label>Contact No.</label>
-                                <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server"
-                                        placeholder="+94xxxxxxxxx" TextMode="Number" ReadOnly="True"></asp:TextBox>
-
-                                    </div>
-
-                            </div>
-
-                            <div class="col-md-7">
-                                <label>Email</label>
-                                <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server"
-                                        placeholder="username@example.com" TextMode="Email" ReadOnly="True"></asp:TextBox>
-                                </div>
-                        </div>
-                    </div>
-
+                        
                        
                         <div class="row my-2">
                             <div class="col-md-5">
                                 <label>Teacher ID</label>
                                 <div class="form-group">
                                     <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control"
-                                        placeholder="Teacher ID" ReadOnly="True" TextMode="Number">
+                                        placeholder="Teacher ID" ReadOnly="false" >
 
                                     </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox5" ErrorMessage="* Please enter teacher Id" style="color:red; font-size:small"></asp:RequiredFieldValidator>
                             </div>
                                 </div>
 
-
-                            <div class="col-md-7">
-                                <label>Teacher name</label>
-                                <div class="form-group">
-                                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"
-                                        placeholder="Teacher name" ReadOnly="True">
-
-                                    </asp:TextBox>
-                            </div>
-
-                        </div>
 
                             </div>
 
                         <div class="row my-2">
                             <div class="col-md-5">
-                                <label>Subject ID</label>
+                                <label>Class name</label>
                                 <div class="form-group">
                                     <asp:TextBox ID="TextBox10" runat="server" CssClass="form-control"
-                                        placeholder="Subject ID" ReadOnly="True" TextMode="Number">
+                                        placeholder="Class name" ReadOnly="false">
 
                                     </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox10" ErrorMessage="* Please enter subject Id" style="color:red; font-size:small"></asp:RequiredFieldValidator>
                             </div>
                                 </div>
 
 
-                            <div class="col-md-7">
-                                <label>Subject name</label>
-                                <div class="form-group">
-                                    <asp:TextBox ID="TextBox12" runat="server" CssClass="form-control"
-                                        placeholder="Subject name" ReadOnly="True">
-
-                                    </asp:TextBox>
-                            </div>
-
-                        </div>
 
                             </div>
 
@@ -129,9 +86,10 @@
                                 <label>Payment amount</label>
                                 <div class="form-group">
                                     <asp:TextBox ID="TextBox11" runat="server" CssClass="form-control"
-                                        placeholder="Payment amount" TextMode="Number" ReadOnly="True">
+                                        placeholder="Payment amount" TextMode="Number" ReadOnly="false">
 
                                     </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox11" ErrorMessage="* Please enter payment" style="color:red; font-size:small"></asp:RequiredFieldValidator>
                             </div>
                                 </div>
 
@@ -143,6 +101,7 @@
                                         placeholder="Payment date" TextMode="Date">
 
                                     </asp:TextBox>
+                                  
                             </div>
 
                         </div>
@@ -158,7 +117,7 @@
                          <div class="row my-4">
                              <div class="col">
                                  <div class="form-group">
-                                     <asp:Button class="btn btn-primary" style="width:100%" ID="Button" runat="server" Text="Pay now" />
+                                     <asp:Button class="btn btn-primary" Style="width: 100%" ID="Button" runat="server" Text="Pay now" OnClick="Button_Click" />
                                  </div>
                          </div>
 

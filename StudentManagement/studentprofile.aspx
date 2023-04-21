@@ -1,10 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="studentprofile.aspx.cs" Inherits="StudentManagement.studentprofile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
-       $(document).ready(function () {
-           $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
-       });
-    </script>
+ 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -198,21 +194,11 @@
 
                             
                     </div>
-
-
-
-                            </div>
-
-                    
-                        </div>
-
-                
+                            </div>                    
+                        </div>                
                 </div>
 
-
             <div class="col-md-7 my-5">
-
-
 
                 <div class="card">
                     <div class="card-body">
@@ -232,7 +218,6 @@
                                 </center>
                             </div>
                         </div>
-
                         
                         <div class="row">
                             <div class="col">
@@ -241,36 +226,23 @@
                         </div>
 
                         <div class="row">
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:lmsDBConnectionString %>" SelectCommand="SELECT [StudentID], [ClassName], [TeacherID], [PayID] FROM [Payment]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:lmsDBConnectionString %>" SelectCommand="SELECT [StudentID], [Fname], [Lname], [ContactNo], [Email] FROM [Student]"></asp:SqlDataSource>
                             <div class="col">
-                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" DataSourceID="SqlDataSource1"></asp:GridView>
+                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" DataKeyNames="StudentID">
+                                    <Columns>
+                                        <asp:BoundField DataField="StudentID" HeaderText="StudentID" ReadOnly="True" SortExpression="StudentID"></asp:BoundField>
+                                        <asp:BoundField DataField="Fname" HeaderText="Fname" SortExpression="Fname"></asp:BoundField>
+                                        <asp:BoundField DataField="Lname" HeaderText="Lname" SortExpression="Lname"></asp:BoundField>
+                                        <asp:BoundField DataField="ContactNo" HeaderText="ContactNo" SortExpression="ContactNo"></asp:BoundField>
+                                        <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email"></asp:BoundField>
+                                    </Columns>
+                                </asp:GridView>
                             </div>
-                        </div>
-
-                       
+                        </div>                       
+                    </div>                           
                     </div>
-
-
-                         
-
-                            
-                    </div>
-
-
-
             </div>
-
-
             </div>
          </div>
-
-                
-       
-  
-
-
-
-
-
 
 </asp:Content>

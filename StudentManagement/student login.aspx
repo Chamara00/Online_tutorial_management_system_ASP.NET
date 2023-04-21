@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="student login.aspx.cs" Inherits="StudentManagement.student_login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </asp:Content>
 
 
@@ -33,19 +35,24 @@
 
                         <div class="row">
                             <div class="col">
-                                <label>Student ID</label>
+                                <label>Student ID <sup style="color:red">*</sup></label>
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"
-                                        placeholder="Student ID">
+                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Student ID">
 
                                     </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="* Please enter your student ID" style="color:red; font-size:small"></asp:RequiredFieldValidator>
 
-                                    <label>Password</label>
+                                        
+                                    <br />
+
+                                    <label>Password <sup style="color:red">*</sup></label>
                                 <div class="form-group">
-                                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"
-                                        placeholder="Password" TextMode="Password">
+                                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Password" TextMode="Password">
+
 
                                     </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="* Please enter your password" style="color:red; font-size:small"></asp:RequiredFieldValidator>
+
 
                                 </div>
                                     <br />

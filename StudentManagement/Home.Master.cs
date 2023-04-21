@@ -81,7 +81,7 @@ namespace StudentManagement
                     LinkButton14.Visible = false; //Pay user link button
                     LinkButton7.Text = "Hello Admin";
 
-                    LinkButton6.Visible = true; //admin login link button
+                    LinkButton6.Visible = false; //admin login link button
                     LinkButton11.Visible = true; //student management link button
                     LinkButton12.Visible = true; //teacher management link button
                     LinkButton8.Visible = true; //class details link button

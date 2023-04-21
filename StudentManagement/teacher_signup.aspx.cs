@@ -70,36 +70,59 @@ namespace StudentManagement
             try
             {
                 SqlConnection con = new SqlConnection(strcon);
-                if (con.State == ConnectionState.Closed)
+                if (FileUpload1.HasFile)
                 {
-                    con.Open();
+                    string filename = FileUpload1.PostedFile.FileName;
+                    string filepath = "images/" + FileUpload1.FileName;
+                    FileUpload1.PostedFile.SaveAs(Server.MapPath("/images/") + filename);
+
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    byte[] imageData = FileUpload1.FileBytes;
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO Teacher (Fname, Lname, Gender, ContactNo, Email, DOB, Equalification, Address, Fee, Media, AccNo, BankName, TeacherID, Password, Photo) values(@Fname, @Lname, @Gender, @ContactNo, @Email, @DOB, @Equalification, @Address, @Fee, @Media, @AccNo, @BankName, @TeacherID, @Password, @Photo)", con);
+
+                    cmd.Parameters.AddWithValue("@Fname", TextBox3.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Lname", TextBox4.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Gender", DropDownList1.SelectedItem.Value);
+                    cmd.Parameters.AddWithValue("@ContactNo", TextBox1.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Email", TextBox2.Text.Trim());
+                    cmd.Parameters.AddWithValue("@DOB", TextBox6.Text.Trim());
+
+                    cmd.Parameters.AddWithValue("@Equalification", TextBox9.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Address", TextBox5.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Fee", TextBox10.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Media", DropDownList4.SelectedItem.Value);
+                    cmd.Parameters.AddWithValue("@AccNo", TextBox11.Text.Trim());
+                    cmd.Parameters.AddWithValue("@BankName", DropDownList3.SelectedItem.Value);
+                    cmd.Parameters.AddWithValue("@TeacherID", TextBox7.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Password", TextBox8.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Photo", imageData);
+
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    Response.Redirect("login.aspx");
+                    
                 }
-                SqlCommand cmd = new SqlCommand("INSERT INTO Teacher (Fname, Lname, Gender, ContactNo, Email, DOB, Equalification, Address, Fee, Media, AccNo, BankName, TeacherID, Password) values(@Fname, @Lname, @Gender, @ContactNo, @Email, @DOB, @Equalification, @Address, @Fee, @Media, @AccNo, @BankName, @TeacherID, @Password)", con);
 
-                cmd.Parameters.AddWithValue("@Fname", TextBox3.Text.Trim());
-                cmd.Parameters.AddWithValue("@Lname", TextBox4.Text.Trim());
-                cmd.Parameters.AddWithValue("@Gender", DropDownList1.SelectedItem.Value);
-                cmd.Parameters.AddWithValue("@ContactNo", TextBox1.Text.Trim());
-                cmd.Parameters.AddWithValue("@Email", TextBox2.Text.Trim());
-                cmd.Parameters.AddWithValue("@DOB", TextBox6.Text.Trim());
-               
-                cmd.Parameters.AddWithValue("@Equalification", TextBox9.Text.Trim());
-                cmd.Parameters.AddWithValue("@Address", TextBox5.Text.Trim());
-                cmd.Parameters.AddWithValue("@Fee", TextBox10.Text.Trim());
-                cmd.Parameters.AddWithValue("@Media", DropDownList4.SelectedItem.Value);
-                cmd.Parameters.AddWithValue("@AccNo", TextBox11.Text.Trim());
-                cmd.Parameters.AddWithValue("@BankName", TextBox10.Text.Trim());
-                cmd.Parameters.AddWithValue("@TeacherID", TextBox7.Text.Trim());
-                cmd.Parameters.AddWithValue("@Password", TextBox8.Text.Trim());
 
-                cmd.ExecuteNonQuery();
-                con.Close();
-                Response.Write("<script>alert('Sign up successful. Go to login page');</script>");
+
+
+                
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
+        }
+
+        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

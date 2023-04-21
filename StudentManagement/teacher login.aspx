@@ -31,19 +31,22 @@
 
                         <div class="row">
                             <div class="col">
-                                <label>Student ID</label>
+                                <label>Student ID <sup style="color:red">*</sup></label>
                                 <div class="form-group">
                                     <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"
                                         placeholder="Teacher ID">
 
                                     </asp:TextBox>
-
-                                    <label>Password</label>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="* Please enter your teacher ID" style="color:red; font-size:small"></asp:RequiredFieldValidator>
+                                    <br />
+                                    <label>Password <sup style="color:red">*</sup></label>
                                 <div class="form-group">
                                     <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"
                                         placeholder="Password" TextMode="Password">
 
                                     </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="* Please enter your password" style="color:red; font-size:small"></asp:RequiredFieldValidator>
+
 
                                 </div>
                                     <br />
